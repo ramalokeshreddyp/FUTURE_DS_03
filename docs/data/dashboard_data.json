@@ -1,0 +1,385 @@
+{
+  "generated_at": "2026-03-17T00:32:47Z",
+  "metrics": {
+    "dataset_rows": 45211,
+    "dataset_columns": 22,
+    "overall_conversion_rate_pct": 11.7,
+    "known_channel_rate_pct": 71.2,
+    "engaged_from_known_pct": 69.39,
+    "customer_from_engaged_pct": 16.24,
+    "largest_drop_off_stage": "Subscribed customers",
+    "best_channel": "cellular",
+    "best_channel_conversion_pct": 14.92,
+    "worst_channel": "unknown",
+    "worst_channel_conversion_pct": 4.07,
+    "best_month": "mar",
+    "best_month_conversion_pct": 51.99,
+    "worst_month": "may",
+    "worst_month_conversion_pct": 6.72,
+    "prior_success_conversion_pct": 64.73,
+    "single_touch_conversion_pct": 14.6,
+    "heavy_touch_conversion_pct": 3.93
+  },
+  "funnel": [
+    {
+      "stage": "Targeted customers",
+      "count": 45211,
+      "conversion_from_previous_pct": 100.0,
+      "drop_off_from_previous_pct": 0.0,
+      "conversion_from_targeted_pct": 100.0
+    },
+    {
+      "stage": "Known channel reached",
+      "count": 32191,
+      "conversion_from_previous_pct": 71.2,
+      "drop_off_from_previous_pct": 28.8,
+      "conversion_from_targeted_pct": 71.2
+    },
+    {
+      "stage": "Engaged calls (>=120s)",
+      "count": 31303,
+      "conversion_from_previous_pct": 97.24,
+      "drop_off_from_previous_pct": 2.76,
+      "conversion_from_targeted_pct": 69.24
+    },
+    {
+      "stage": "Subscribed customers",
+      "count": 5289,
+      "conversion_from_previous_pct": 16.9,
+      "drop_off_from_previous_pct": 83.1,
+      "conversion_from_targeted_pct": 11.7
+    }
+  ],
+  "channels": [
+    {
+      "contact": "cellular",
+      "records": 29285,
+      "conversions": 4369,
+      "conversion_rate": 14.92,
+      "avg_duration": 263.0,
+      "median_duration": 184.0
+    },
+    {
+      "contact": "telephone",
+      "records": 2906,
+      "conversions": 390,
+      "conversion_rate": 13.42,
+      "avg_duration": 235.4,
+      "median_duration": 155.0
+    },
+    {
+      "contact": "unknown",
+      "records": 13020,
+      "conversions": 530,
+      "conversion_rate": 4.07,
+      "avg_duration": 252.3,
+      "median_duration": 178.0
+    }
+  ],
+  "months": [
+    {
+      "month": "jan",
+      "records": 1403,
+      "conversions": 142,
+      "conversion_rate": 10.12,
+      "avg_duration": 268.2,
+      "median_duration": 194.0
+    },
+    {
+      "month": "feb",
+      "records": 2649,
+      "conversions": 441,
+      "conversion_rate": 16.65,
+      "avg_duration": 248.3,
+      "median_duration": 171.0
+    },
+    {
+      "month": "mar",
+      "records": 477,
+      "conversions": 248,
+      "conversion_rate": 51.99,
+      "avg_duration": 244.4,
+      "median_duration": 187.0
+    },
+    {
+      "month": "apr",
+      "records": 2932,
+      "conversions": 577,
+      "conversion_rate": 19.68,
+      "avg_duration": 298.1,
+      "median_duration": 224.0
+    },
+    {
+      "month": "may",
+      "records": 13766,
+      "conversions": 925,
+      "conversion_rate": 6.72,
+      "avg_duration": 260.9,
+      "median_duration": 190.0
+    },
+    {
+      "month": "jun",
+      "records": 5341,
+      "conversions": 546,
+      "conversion_rate": 10.22,
+      "avg_duration": 243.1,
+      "median_duration": 164.0
+    },
+    {
+      "month": "jul",
+      "records": 6895,
+      "conversions": 627,
+      "conversion_rate": 9.09,
+      "avg_duration": 268.0,
+      "median_duration": 180.0
+    },
+    {
+      "month": "aug",
+      "records": 6247,
+      "conversions": 688,
+      "conversion_rate": 11.01,
+      "avg_duration": 232.4,
+      "median_duration": 156.0
+    },
+    {
+      "month": "sep",
+      "records": 579,
+      "conversions": 269,
+      "conversion_rate": 46.46,
+      "avg_duration": 292.3,
+      "median_duration": 224.0
+    },
+    {
+      "month": "oct",
+      "records": 738,
+      "conversions": 323,
+      "conversion_rate": 43.77,
+      "avg_duration": 288.3,
+      "median_duration": 207.0
+    },
+    {
+      "month": "nov",
+      "records": 3970,
+      "conversions": 403,
+      "conversion_rate": 10.15,
+      "avg_duration": 253.1,
+      "median_duration": 168.0
+    },
+    {
+      "month": "dec",
+      "records": 214,
+      "conversions": 100,
+      "conversion_rate": 46.73,
+      "avg_duration": 329.3,
+      "median_duration": 267.0
+    }
+  ],
+  "prior_outcomes": [
+    {
+      "poutcome": "success",
+      "records": 1511,
+      "conversions": 978,
+      "conversion_rate": 64.73,
+      "avg_duration": 316.9,
+      "median_duration": 253.0
+    },
+    {
+      "poutcome": "other",
+      "records": 1840,
+      "conversions": 307,
+      "conversion_rate": 16.68,
+      "avg_duration": 255.7,
+      "median_duration": 182.5
+    },
+    {
+      "poutcome": "failure",
+      "records": 4901,
+      "conversions": 618,
+      "conversion_rate": 12.61,
+      "avg_duration": 244.2,
+      "median_duration": 177.0
+    },
+    {
+      "poutcome": "unknown",
+      "records": 36959,
+      "conversions": 3386,
+      "conversion_rate": 9.16,
+      "avg_duration": 257.7,
+      "median_duration": 177.0
+    }
+  ],
+  "campaign_frequency": [
+    {
+      "campaign_bucket": "1",
+      "records": 17544,
+      "conversions": 2561,
+      "conversion_rate": 14.6,
+      "avg_duration": 261.1,
+      "median_duration": 190.0
+    },
+    {
+      "campaign_bucket": "2",
+      "records": 12505,
+      "conversions": 1401,
+      "conversion_rate": 11.2,
+      "avg_duration": 275.3,
+      "median_duration": 194.0
+    },
+    {
+      "campaign_bucket": "3",
+      "records": 5521,
+      "conversions": 618,
+      "conversion_rate": 11.19,
+      "avg_duration": 271.6,
+      "median_duration": 188.0
+    },
+    {
+      "campaign_bucket": "4-5",
+      "records": 5286,
+      "conversions": 456,
+      "conversion_rate": 8.63,
+      "avg_duration": 245.6,
+      "median_duration": 160.5
+    },
+    {
+      "campaign_bucket": "6-10",
+      "records": 3159,
+      "conversions": 206,
+      "conversion_rate": 6.52,
+      "avg_duration": 210.3,
+      "median_duration": 131.0
+    },
+    {
+      "campaign_bucket": "11+",
+      "records": 1196,
+      "conversions": 47,
+      "conversion_rate": 3.93,
+      "avg_duration": 155.9,
+      "median_duration": 76.0
+    }
+  ],
+  "duration": [
+    {
+      "duration_bucket": "0-59s",
+      "records": 4659,
+      "conversions": 9,
+      "conversion_rate": 0.19,
+      "avg_duration": 34.2,
+      "median_duration": 36.0
+    },
+    {
+      "duration_bucket": "60-119s",
+      "records": 9249,
+      "conversions": 195,
+      "conversion_rate": 2.11,
+      "avg_duration": 90.3,
+      "median_duration": 90.0
+    },
+    {
+      "duration_bucket": "120-179s",
+      "records": 8629,
+      "conversions": 497,
+      "conversion_rate": 5.76,
+      "avg_duration": 148.2,
+      "median_duration": 148.0
+    },
+    {
+      "duration_bucket": "180-299s",
+      "records": 10345,
+      "conversions": 1121,
+      "conversion_rate": 10.84,
+      "avg_duration": 232.4,
+      "median_duration": 229.0
+    },
+    {
+      "duration_bucket": "300-599s",
+      "records": 8527,
+      "conversions": 1630,
+      "conversion_rate": 19.12,
+      "avg_duration": 411.8,
+      "median_duration": 395.0
+    },
+    {
+      "duration_bucket": "600s+",
+      "records": 3802,
+      "conversions": 1837,
+      "conversion_rate": 48.32,
+      "avg_duration": 915.9,
+      "median_duration": 806.0
+    }
+  ],
+  "top_jobs": [
+    {
+      "job": "student",
+      "records": 938,
+      "conversions": 269,
+      "conversion_rate": 28.68,
+      "avg_duration": 246.7,
+      "median_duration": 180.0
+    },
+    {
+      "job": "retired",
+      "records": 2264,
+      "conversions": 516,
+      "conversion_rate": 22.79,
+      "avg_duration": 287.4,
+      "median_duration": 204.0
+    },
+    {
+      "job": "unemployed",
+      "records": 1303,
+      "conversions": 202,
+      "conversion_rate": 15.5,
+      "avg_duration": 288.5,
+      "median_duration": 200.0
+    },
+    {
+      "job": "management",
+      "records": 9458,
+      "conversions": 1301,
+      "conversion_rate": 13.76,
+      "avg_duration": 254.0,
+      "median_duration": 173.0
+    },
+    {
+      "job": "admin.",
+      "records": 5171,
+      "conversions": 631,
+      "conversion_rate": 12.2,
+      "avg_duration": 246.9,
+      "median_duration": 174.0
+    },
+    {
+      "job": "self-employed",
+      "records": 1579,
+      "conversions": 187,
+      "conversion_rate": 11.84,
+      "avg_duration": 268.2,
+      "median_duration": 179.0
+    }
+  ],
+  "insights": [
+    {
+      "title": "Late-stage drop-off dominates",
+      "detail": "Only 16.24% of engaged calls convert, so the biggest revenue leak happens after the conversation already starts."
+    },
+    {
+      "title": "Known channels produce better lead quality",
+      "detail": "Cellular converts at 14.92% while unknown contact records convert at just 4.07%, which points to contact-data quality as a real funnel lever."
+    },
+    {
+      "title": "Repeated contact shows diminishing returns",
+      "detail": "Conversion falls from 14.60% on the first touch to 3.93% after 11+ attempts, so heavy follow-up is not efficient at scale."
+    },
+    {
+      "title": "Prior relationship success is a powerful targeting signal",
+      "detail": "Customers with prior campaign success convert at 64.73%, making them prime candidates for tailored retention and reactivation playbooks."
+    }
+  ],
+  "recommendations": [
+    "Prioritize reachable prospects with known mobile channels and improve channel completeness on low-information records.",
+    "Route prior-success customers into a dedicated high-intent segment instead of treating them like generic outreach leads.",
+    "Audit the close motion for engaged calls because that is where the largest conversion loss still occurs.",
+    "Set cadence review rules after 4 to 5 touches rather than allowing low-yield contact loops to continue indefinitely."
+  ]
+}

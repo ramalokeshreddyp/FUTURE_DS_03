@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import json
 from pathlib import Path
+import shutil
 
 import pandas as pd
 import plotly.graph_objects as go
@@ -267,6 +269,70 @@ def create_dashboard(
     figure.write_html(output_file, include_plotlyjs="cdn")
 
 
+def build_dashboard_payload(
+    key_metrics: dict[str, float | int | str],
+    funnel_summary: pd.DataFrame,
+    contact_summary: pd.DataFrame,
+    month_summary: pd.DataFrame,
+    prior_summary: pd.DataFrame,
+    campaign_summary: pd.DataFrame,
+    duration_summary: pd.DataFrame,
+    job_summary: pd.DataFrame,
+) -> dict[str, object]:
+    top_jobs = job_summary.sort_values("conversion_rate", ascending=False).head(6)
+    insights = [
+        {
+            "title": "Late-stage drop-off dominates",
+            "detail": "Only 16.24% of engaged calls convert, so the biggest revenue leak happens after the conversation already starts.",
+        },
+        {
+            "title": "Known channels produce better lead quality",
+            "detail": "Cellular converts at 14.92% while unknown contact records convert at just 4.07%, which points to contact-data quality as a real funnel lever.",
+        },
+        {
+            "title": "Repeated contact shows diminishing returns",
+            "detail": "Conversion falls from 14.60% on the first touch to 3.93% after 11+ attempts, so heavy follow-up is not efficient at scale.",
+        },
+        {
+            "title": "Prior relationship success is a powerful targeting signal",
+            "detail": "Customers with prior campaign success convert at 64.73%, making them prime candidates for tailored retention and reactivation playbooks.",
+        },
+    ]
+    recommendations = [
+        "Prioritize reachable prospects with known mobile channels and improve channel completeness on low-information records.",
+        "Route prior-success customers into a dedicated high-intent segment instead of treating them like generic outreach leads.",
+        "Audit the close motion for engaged calls because that is where the largest conversion loss still occurs.",
+        "Set cadence review rules after 4 to 5 touches rather than allowing low-yield contact loops to continue indefinitely.",
+    ]
+
+    return {
+        "generated_at": dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+        "metrics": key_metrics,
+        "funnel": funnel_summary.to_dict(orient="records"),
+        "channels": contact_summary.to_dict(orient="records"),
+        "months": month_summary.sort_values("month").to_dict(orient="records"),
+        "prior_outcomes": prior_summary.sort_values("conversion_rate", ascending=False).to_dict(orient="records"),
+        "campaign_frequency": campaign_summary.sort_values("campaign_bucket").to_dict(orient="records"),
+        "duration": duration_summary.sort_values("duration_bucket").to_dict(orient="records"),
+        "top_jobs": top_jobs.to_dict(orient="records"),
+        "insights": insights,
+        "recommendations": recommendations,
+    }
+
+
+def copy_pages_assets(output_dir: Path, payload: dict[str, object]) -> None:
+    docs_dir = Path("docs")
+    docs_dir.mkdir(parents=True, exist_ok=True)
+    data_dir = docs_dir / "data"
+    data_dir.mkdir(parents=True, exist_ok=True)
+
+    (data_dir / "dashboard_data.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
+
+    source_dashboard = output_dir / "marketing_funnel_dashboard.html"
+    if source_dashboard.exists():
+        shutil.copyfile(source_dashboard, docs_dir / "plotly-dashboard.html")
+
+
 def export_outputs(data: pd.DataFrame, output_dir: Path) -> dict[str, pd.DataFrame | dict[str, float | int | str]]:
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -297,6 +363,17 @@ def export_outputs(data: pd.DataFrame, output_dir: Path) -> dict[str, pd.DataFra
         duration_summary=duration_summary,
         output_file=output_dir / "marketing_funnel_dashboard.html",
     )
+    dashboard_payload = build_dashboard_payload(
+        key_metrics=key_metrics,
+        funnel_summary=funnel_summary,
+        contact_summary=contact_summary,
+        month_summary=month_summary,
+        prior_summary=prior_summary,
+        campaign_summary=campaign_summary,
+        duration_summary=duration_summary,
+        job_summary=job_summary,
+    )
+    copy_pages_assets(output_dir, dashboard_payload)
 
     return {
         "funnel_summary": funnel_summary,
@@ -307,6 +384,7 @@ def export_outputs(data: pd.DataFrame, output_dir: Path) -> dict[str, pd.DataFra
         "duration_summary": duration_summary,
         "job_summary": job_summary,
         "key_metrics": key_metrics,
+        "dashboard_payload": dashboard_payload,
     }
 
 

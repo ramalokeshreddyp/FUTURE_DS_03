@@ -24,6 +24,7 @@ Because the dataset is campaign-oriented rather than web-session-oriented, the a
 Open the generated dashboard after running the script:
 
 - `outputs/marketing_funnel_dashboard.html`
+- `docs/index.html` for the GitHub Pages presentation site
 
 ## Business Questions Answered
 
@@ -141,8 +142,20 @@ python src/funnel_analysis.py --dataset "C:/path/to/bank-full.csv"
 ## Deliverables Produced
 
 - Interactive funnel dashboard in HTML
+- GitHub Pages microsite with advanced visual storytelling
 - CSV summaries for funnel, channels, months, prior outcomes, campaign frequency, duration, and jobs
 - Documentation for portfolio, GitHub, and stakeholder sharing
+
+## GitHub Pages
+
+This repository includes a static GitHub Pages site under `docs/` and a deployment workflow at `.github/workflows/deploy-pages.yml`.
+
+After pushing to `main`, GitHub Actions deploys the contents of `docs/` as a public site. The analysis script refreshes the site data automatically by writing:
+
+- `docs/data/dashboard_data.json`
+- `docs/plotly-dashboard.html`
+
+If Pages is not already enabled in repository settings, set the source to **GitHub Actions**.
 
 ## Dataset Citation
 
