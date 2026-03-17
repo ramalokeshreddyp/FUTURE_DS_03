@@ -86,11 +86,12 @@ function renderBarChart(target, data, xKey, yKey, color, orientation = 'v', tick
       color,
       line: { color: 'rgba(24,49,83,0.15)', width: 1 },
     },
+    customdata: data.map((row) => row.records ?? null),
     text: data.map((row) => `${row[yKey]}${tickSuffix}`),
     textposition: orientation === 'v' ? 'outside' : 'auto',
     hovertemplate: orientation === 'v'
-      ? '%{x}<br>Conversion: %{y}%<extra></extra>'
-      : '%{y}<br>Conversion: %{x}%<extra></extra>',
+      ? '%{x}<br>Conversion: %{y}%<br>Records: %{customdata:,}<extra></extra>'
+      : '%{y}<br>Conversion: %{x}%<br>Records: %{customdata:,}<extra></extra>',
   }], {
     ...plotlyTheme,
     yaxis: orientation === 'v' ? { title: 'Conversion rate (%)', gridcolor: 'rgba(24,49,83,0.08)' } : { automargin: true },
@@ -100,19 +101,28 @@ function renderBarChart(target, data, xKey, yKey, color, orientation = 'v', tick
 
 function renderMonthChart(months) {
   Plotly.newPlot('month-chart', [{
+    type: 'bar',
+    x: months.map((row) => row.month),
+    y: months.map((row) => row.records),
+    marker: { color: 'rgba(24,49,83,0.22)' },
+    yaxis: 'y2',
+    name: 'Volume',
+    hovertemplate: '%{x}<br>Records: %{y:,}<extra></extra>',
+  }, {
     type: 'scatter',
     mode: 'lines+markers',
     x: months.map((row) => row.month),
     y: months.map((row) => row.conversion_rate),
     line: { color: '#d95d39', width: 4, shape: 'spline' },
     marker: { color: '#183153', size: 9 },
-    fill: 'tozeroy',
-    fillcolor: 'rgba(217,93,57,0.12)',
+    name: 'Conversion',
     hovertemplate: '%{x}<br>Conversion: %{y}%<extra></extra>',
   }], {
     ...plotlyTheme,
     yaxis: { title: 'Conversion rate (%)', gridcolor: 'rgba(24,49,83,0.08)' },
+    yaxis2: { title: 'Records', overlaying: 'y', side: 'right', showgrid: false },
     xaxis: { automargin: true },
+    legend: { orientation: 'h', x: 0.02, y: 1.16 },
   }, { responsive: true, displayModeBar: false });
 }
 

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-17T00:35:12Z",
+  "generated_at": "2026-03-17T00:46:56Z",
   "metrics": {
     "dataset_rows": 45211,
     "dataset_columns": 22,
@@ -361,19 +361,19 @@
   "insights": [
     {
       "title": "Late-stage drop-off dominates",
-      "detail": "Only 16.24% of engaged calls convert, so the biggest revenue leak happens after the conversation already starts."
+      "detail": "The largest stage loss is at 'Subscribed customers' with a 83.10% drop-off from the previous stage."
     },
     {
       "title": "Known channels produce better lead quality",
-      "detail": "Cellular converts at 14.92% while unknown contact records convert at just 4.07%, which points to contact-data quality as a real funnel lever."
+      "detail": "Top channel 'cellular' converts at 14.92%, while 'unknown' converts at 4.07%."
     },
     {
       "title": "Repeated contact shows diminishing returns",
-      "detail": "Conversion falls from 14.60% on the first touch to 3.93% after 11+ attempts, so heavy follow-up is not efficient at scale."
+      "detail": "Conversion declines from 14.60% on the first touch to 3.93% after 11+ contacts."
     },
     {
       "title": "Prior relationship success is a powerful targeting signal",
-      "detail": "Customers with prior campaign success convert at 64.73%, making them prime candidates for tailored retention and reactivation playbooks."
+      "detail": "Clients with prior campaign success convert at 64.73%; the best-performing month is 'mar' at 51.99%."
     }
   ],
   "recommendations": [
