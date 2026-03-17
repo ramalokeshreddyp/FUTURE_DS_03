@@ -1,0 +1,5 @@
+poutcome,records,conversions,conversion_rate,avg_duration,median_duration
+success,1511,978,64.73,316.9,253.0
+other,1840,307,16.68,255.7,182.5
+failure,4901,618,12.61,244.2,177.0
+unknown,36959,3386,9.16,257.7,177.0

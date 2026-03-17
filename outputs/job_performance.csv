@@ -1,0 +1,13 @@
+job,records,conversions,conversion_rate,avg_duration,median_duration
+student,938,269,28.68,246.7,180.0
+retired,2264,516,22.79,287.4,204.0
+unemployed,1303,202,15.5,288.5,200.0
+management,9458,1301,13.76,254.0,173.0
+admin.,5171,631,12.2,246.9,174.0
+self-employed,1579,187,11.84,268.2,179.0
+unknown,288,34,11.81,237.6,165.0
+technician,7597,840,11.06,252.9,176.0
+services,4154,369,8.88,259.3,186.0
+housemaid,1240,109,8.79,245.8,163.0
+entrepreneur,1487,123,8.27,256.3,178.0
+blue-collar,9732,708,7.27,262.9,186.0
