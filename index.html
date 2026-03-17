@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketing Funnel Command Center</title>
+  <meta name="description" content="Interactive GitHub Pages dashboard for bank marketing funnel performance analysis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <nav class="topbar">
+        <div class="brand-block">
+          <span class="eyebrow">Future Interns • Task 3</span>
+          <span class="brand">Marketing Funnel Command Center</span>
+        </div>
+        <div class="topbar-links">
+          <a href="#charts">Explore analysis</a>
+          <a href="./plotly-dashboard.html">Open full Plotly dashboard</a>
+        </div>
+      </nav>
+
+      <div class="hero-grid">
+        <section class="hero-copy panel glass">
+          <p class="eyebrow">Bank marketing conversion intelligence</p>
+          <h1>Advanced GitHub Pages dashboard for conversion drop-offs, channel quality, and growth opportunities.</h1>
+          <p class="hero-text">
+            This site turns the bank marketing dataset into a stakeholder-ready funnel performance experience.
+            It highlights the biggest revenue leak, compares channel quality, and surfaces the operational actions most likely to lift subscription rates.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#charts">View dashboard</a>
+            <a class="button secondary" href="./plotly-dashboard.html">Deep-dive analytics</a>
+          </div>
+        </section>
+
+        <section class="hero-spotlight panel accent-card">
+          <p class="spotlight-label">Primary finding</p>
+          <h2 id="dropoff-stage">Loading...</h2>
+          <p id="dropoff-summary">Preparing stage analysis...</p>
+          <div class="spotlight-metrics">
+            <div>
+              <span>Overall conversion</span>
+              <strong id="overall-conversion">--</strong>
+            </div>
+            <div>
+              <span>Known-channel reach</span>
+              <strong id="known-reach">--</strong>
+            </div>
+          </div>
+        </section>
+      </div>
+    </header>
+
+    <main>
+      <section class="metric-grid" id="metric-grid"></section>
+
+      <section class="section-heading">
+        <div>
+          <p class="eyebrow">Decision support</p>
+          <h2>What the funnel is saying</h2>
+        </div>
+        <p class="section-copy">
+          The site is built around a campaign funnel proxy: targeted customers, known reachable channel, engaged call, and final subscription.
+          That framing makes the dataset useful for practical growth analysis even without a website event stream.
+        </p>
+      </section>
+
+      <section class="insight-grid" id="insight-grid"></section>
+
+      <section class="charts-section" id="charts">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">Interactive dashboard</p>
+            <h2>Conversion performance by stage, channel, timing, and effort</h2>
+          </div>
+        </div>
+
+        <div class="chart-layout">
+          <article class="panel chart-panel wide">
+            <div class="panel-heading">
+              <h3>Funnel shape and stage loss</h3>
+              <p>Counts and drop-offs across the inferred marketing funnel.</p>
+            </div>
+            <div id="funnel-chart" class="chart"></div>
+          </article>
+
+          <article class="panel chart-panel">
+            <div class="panel-heading">
+              <h3>Channel efficiency</h3>
+              <p>Known channels materially outperform low-information records.</p>
+            </div>
+            <div id="channel-chart" class="chart"></div>
+          </article>
+
+          <article class="panel chart-panel">
+            <div class="panel-heading">
+              <h3>Seasonality pulse</h3>
+              <p>High-converting months show where test budgets should concentrate.</p>
+            </div>
+            <div id="month-chart" class="chart"></div>
+          </article>
+
+          <article class="panel chart-panel">
+            <div class="panel-heading">
+              <h3>Prior outcome lift</h3>
+              <p>Historical campaign success is the strongest targeting signal in the dataset.</p>
+            </div>
+            <div id="prior-chart" class="chart"></div>
+          </article>
+
+          <article class="panel chart-panel">
+            <div class="panel-heading">
+              <h3>Contact fatigue</h3>
+              <p>Repeated outreach produces rapidly diminishing returns.</p>
+            </div>
+            <div id="campaign-chart" class="chart"></div>
+          </article>
+
+          <article class="panel chart-panel">
+            <div class="panel-heading">
+              <h3>Conversation depth</h3>
+              <p>Longer calls correlate with much stronger close rates.</p>
+            </div>
+            <div id="duration-chart" class="chart"></div>
+          </article>
+
+          <article class="panel chart-panel wide">
+            <div class="panel-heading">
+              <h3>Best-converting job segments</h3>
+              <p>Useful as a segmentation lens for targeted campaign tests.</p>
+            </div>
+            <div id="jobs-chart" class="chart"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="recommendation-section panel glass">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">Recommended actions</p>
+            <h2>What to change next</h2>
+          </div>
+        </div>
+        <div class="recommendation-list" id="recommendation-list"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <p class="eyebrow">Source and delivery</p>
+        <p>Generated from the UCI Bank Marketing dataset and published through GitHub Pages.</p>
+      </div>
+      <a href="https://doi.org/10.24432/C5K306">Dataset citation</a>
+    </footer>
+  </div>
+</body>
+</html>
