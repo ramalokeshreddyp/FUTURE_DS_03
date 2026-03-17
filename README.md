@@ -23,7 +23,7 @@ Because the dataset is campaign-oriented rather than web-session-oriented, the a
 
 Open the generated dashboard after running the script:
 
-- `outputs/marketing_funnel_dashboard.html`
+- `docs/plotly-dashboard.html`
 - `docs/index.html` for the GitHub Pages presentation site
 
 ## Business Questions Answered
@@ -54,7 +54,6 @@ DS3/
 ├── src/
 │   └── funnel_analysis.py
 └── outputs/
-    ├── marketing_funnel_dashboard.html
     ├── funnel_stage_summary.csv
     ├── channel_performance.csv
     ├── month_performance.csv

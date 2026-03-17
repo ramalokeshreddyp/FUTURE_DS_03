@@ -4,7 +4,6 @@ import argparse
 import datetime as dt
 import json
 from pathlib import Path
-import shutil
 
 import pandas as pd
 import plotly.graph_objects as go
@@ -328,10 +327,6 @@ def copy_pages_assets(output_dir: Path, payload: dict[str, object]) -> None:
 
     (data_dir / "dashboard_data.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
-    source_dashboard = output_dir / "marketing_funnel_dashboard.html"
-    if source_dashboard.exists():
-        shutil.copyfile(source_dashboard, docs_dir / "plotly-dashboard.html")
-
 
 def export_outputs(data: pd.DataFrame, output_dir: Path) -> dict[str, pd.DataFrame | dict[str, float | int | str]]:
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -361,7 +356,7 @@ def export_outputs(data: pd.DataFrame, output_dir: Path) -> dict[str, pd.DataFra
         prior_summary=prior_summary,
         campaign_summary=campaign_summary,
         duration_summary=duration_summary,
-        output_file=output_dir / "marketing_funnel_dashboard.html",
+        output_file=Path("docs") / "plotly-dashboard.html",
     )
     dashboard_payload = build_dashboard_payload(
         key_metrics=key_metrics,
