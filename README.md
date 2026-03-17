@@ -149,12 +149,12 @@ python src/funnel_analysis.py --dataset "C:/path/to/bank-full.csv"
 
 This repository includes a static GitHub Pages site under `docs/` and a deployment workflow at `.github/workflows/deploy-pages.yml`.
 
-After pushing to `main`, GitHub Actions deploys the contents of `docs/` as a public site. The analysis script refreshes the site data automatically by writing:
+After pushing to `main`, GitHub Actions deploys the contents of `docs/` to the `gh-pages` branch. The analysis script refreshes the site data automatically by writing:
 
 - `docs/data/dashboard_data.json`
 - `docs/plotly-dashboard.html`
 
-If Pages is not already enabled in repository settings, set the source to **GitHub Actions**.
+If Pages is not already enabled in repository settings, set the source to **Deploy from a branch** and choose `gh-pages` with `/ (root)`.
 
 ## Dataset Citation
 
