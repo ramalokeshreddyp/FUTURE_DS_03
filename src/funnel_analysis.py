@@ -278,23 +278,46 @@ def build_dashboard_payload(
     duration_summary: pd.DataFrame,
     job_summary: pd.DataFrame,
 ) -> dict[str, object]:
+    def pct(value: float) -> str:
+        return f"{value:.2f}%"
+
     top_jobs = job_summary.sort_values("conversion_rate", ascending=False).head(6)
+    largest_drop_row = funnel_summary.sort_values("drop_off_from_previous_pct", ascending=False).iloc[0]
+    best_channel_row = contact_summary.sort_values("conversion_rate", ascending=False).iloc[0]
+    worst_channel_row = contact_summary.sort_values("conversion_rate", ascending=True).iloc[0]
+    best_month_row = month_summary.sort_values("conversion_rate", ascending=False).iloc[0]
+    single_touch = campaign_summary.loc[campaign_summary["campaign_bucket"] == "1", "conversion_rate"].iloc[0]
+    heavy_touch = campaign_summary.loc[campaign_summary["campaign_bucket"] == "11+", "conversion_rate"].iloc[0]
+    prior_success = prior_summary.loc[prior_summary["poutcome"] == "success", "conversion_rate"].iloc[0]
+
     insights = [
         {
             "title": "Late-stage drop-off dominates",
-            "detail": "Only 16.24% of engaged calls convert, so the biggest revenue leak happens after the conversation already starts.",
+            "detail": (
+                f"The largest stage loss is at '{largest_drop_row['stage']}' with a "
+                f"{pct(float(largest_drop_row['drop_off_from_previous_pct']))} drop-off from the previous stage."
+            ),
         },
         {
             "title": "Known channels produce better lead quality",
-            "detail": "Cellular converts at 14.92% while unknown contact records convert at just 4.07%, which points to contact-data quality as a real funnel lever.",
+            "detail": (
+                f"Top channel '{best_channel_row['contact']}' converts at {pct(float(best_channel_row['conversion_rate']))}, "
+                f"while '{worst_channel_row['contact']}' converts at {pct(float(worst_channel_row['conversion_rate']))}."
+            ),
         },
         {
             "title": "Repeated contact shows diminishing returns",
-            "detail": "Conversion falls from 14.60% on the first touch to 3.93% after 11+ attempts, so heavy follow-up is not efficient at scale.",
+            "detail": (
+                f"Conversion declines from {pct(float(single_touch))} on the first touch to "
+                f"{pct(float(heavy_touch))} after 11+ contacts."
+            ),
         },
         {
             "title": "Prior relationship success is a powerful targeting signal",
-            "detail": "Customers with prior campaign success convert at 64.73%, making them prime candidates for tailored retention and reactivation playbooks.",
+            "detail": (
+                f"Clients with prior campaign success convert at {pct(float(prior_success))}; "
+                f"the best-performing month is '{best_month_row['month']}' at {pct(float(best_month_row['conversion_rate']))}."
+            ),
         },
     ]
     recommendations = [
@@ -319,7 +342,7 @@ def build_dashboard_payload(
     }
 
 
-def copy_pages_assets(output_dir: Path, payload: dict[str, object]) -> None:
+def copy_pages_assets(payload: dict[str, object]) -> None:
     docs_dir = Path("docs")
     docs_dir.mkdir(parents=True, exist_ok=True)
     data_dir = docs_dir / "data"
@@ -368,7 +391,7 @@ def export_outputs(data: pd.DataFrame, output_dir: Path) -> dict[str, pd.DataFra
         duration_summary=duration_summary,
         job_summary=job_summary,
     )
-    copy_pages_assets(output_dir, dashboard_payload)
+    copy_pages_assets(dashboard_payload)
 
     return {
         "funnel_summary": funnel_summary,
